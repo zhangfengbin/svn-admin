@@ -30,7 +30,8 @@ public class FolderController  implements FolderApi{
             }else{
                 folderUrl= projectConfigure.getProjectUrl()+"/"+folderName;
             }
-            return folderService.addFolder(folder);
+
+            return folderService.addFolder(folder,folderUrl);
 
         }else{
             return ResultStatus.resultFailed(2,"传入信息不完整");

@@ -21,7 +21,7 @@ public class FolderServiceImpl implements FolderService {
 
     @Override
     @Transactional
-    public ResultStatus addFolder(Folder folder) {
+    public ResultStatus addFolder(Folder folder,String folderUrl) {
         List<Folder> folders = folderMapper.queryFolderByFolderPath(folder.getFolderPath());
         if(folders.size()>0){
             return ResultStatus.resultFailed(2,"文件路径已存在，无法新增");
@@ -33,7 +33,7 @@ public class FolderServiceImpl implements FolderService {
                    e.printStackTrace();
                   return  ResultStatus.resultFailed(2,"svn文件夹操作失败");
                }
-              return ResultStatus.resultOk();
+              return ResultStatus.resultOk(folderUrl);
 
         }
 
