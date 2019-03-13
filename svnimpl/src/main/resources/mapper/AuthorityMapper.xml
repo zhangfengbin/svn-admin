@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pfpj.dao.AuthorityMapper" >
+    <resultMap id="BaseResultMap" type="com.pfpj.entity.AuthorityUserAndFoler">
+        <result column="svn_username" property="svnUserName" javaType="String"></result>
+        <result column="folder_path" property="folderPath" javaType="String"></result>
+        <result column="authority" property="authority" javaType="String"></result>
+    </resultMap>
+    <select id="queryAuthority" parameterType="com.pfpj.entity.AuthorityUserAndFoler" resultMap="BaseResultMap">
+        select svn_username, folder_path, authority from authority
+        where svn_username = #{svnUserName} and folder_path = #{folderPath}
+    </select>
+
+    <update id="updateAuthority" parameterType="com.pfpj.entity.AuthorityUserAndFoler" >
+        UPDATE  authority set authority = #{authority}
+        where svn_username = #{svnUserName} and folder_path = #{folderPath}
+    </update>
+    <insert id="saveAuthority" parameterType="com.pfpj.entity.AuthorityUserAndFoler">
+        INSERT  into authority values(#{svnUserName},#{folderPath},#{authority})
+    </insert>
+    <select id="queryAuthorityall" resultMap="BaseResultMap">
+        select svn_username, folder_path, authority from authority
+    </select>
+    <delete id="deleteBySvnUserName" parameterType="java.lang.String">
+        delete from authority where svn_username = #{svnUserName}
+    </delete>
+
+</mapper>

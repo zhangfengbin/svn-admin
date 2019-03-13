@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pfpj.dao.ProjectMapper" >
+    <resultMap id="BaseResultMap" type="com.pfpj.entity.Project">
+        <result column="project_id" property="projectId" javaType="String"></result>
+        <result column="project_name" property="projectName" javaType="String"></result>
+        <result column="project_path" property="projectPath" javaType="String"></result>
+        <result column="project_url" property="projectUrl" javaType="String"></result>
+        <result column="project_msg" property="projectMsg" javaType="String"></result>
+    </resultMap>
+  <select id="queryProjects"  parameterType="com.pfpj.entity.Project" resultMap="BaseResultMap">
+
+      select  project_id ,project_name ,project_path,project_url,project_msg FROM  project
+      <where>
+          <if test="projectName != '' and projectPath != '' and projectUrl != ''">
+              project_name = #{projectName} and project_path = #{projectPath} and project_url = #{projectUrl}
+          </if>
+      </where>
+  </select>
+
+    <insert id="saveProject" parameterType="com.pfpj.entity.Project" >
+        insert into project values(#{projectId},#{projectName},#{projectPath},#{projectUrl},#{projectMsg})
+    </insert>
+  
+</mapper>

@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.253.243:3306/drds_bkgyl_kf_jhgl?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: drds_bkgyl_kf_jhgl
+    password: Wc123456
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+server:
+  port: 9090
+  context-path: /
+#pro:
+#  projectName: project
+#  projectPath: /home/admin/svn_ck/
+#  projectUrl: http://192.168.246.153:7001/svn/project
+#  passwdPath: /home/admin/svn_ck/svninfo/passwd
+#  authzPath: /home/admin/svn_ck/svninfo/authz
+#  userName: sysadmin
+#  passwd: "000000"
+pro:
+  projectName: project
+  projectPath: /svn
+  projectUrl: http://192.168.253.245:9999/svn/project
+  passwdPath: /svn/passwd
+  authzPath: /svn/authz
+  userName: sysadmin
+  passwd: "000000"
